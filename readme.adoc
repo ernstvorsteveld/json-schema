@@ -1,4 +1,8 @@
 = JSON Schema
+:toc: left
+:toclevels: 4
+:version-label!:
+:sectnums:
 
 == Synopsis
 
