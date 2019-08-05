@@ -40,10 +40,11 @@ public class JsonSchemaTest {
             System.out.println(objectMapper.readValue(jsonSubject.toString(), HashMap.class));
             return true;
         } catch (ValidationException e) {
-            System.out.println("Not a valid schema, error: " + e.getErrorMessage());
             System.out.println("Type of error: " + e.getKeyword());
+            System.out.println("Error message: " + e.getErrorMessage());
+            System.out.println("Attribute: " + e.getPointerToViolation());
         } catch (JsonProcessingException e) {
-            System.out.println("Not a valid schema, error: " + e.getMessage());
+            System.out.println("Not a valid object mapper call, error: " + e.getMessage());
         }
         return false;
     }
