@@ -1,1 +1,15 @@
-json-schema example
+= JSON Schema
+
+== Synopsis
+
+This project contains a simple json schema example. It is only a test case which declares a schema and a set of user objects that need to be validated using the schema.
+
+== Error handling
+
+The example uses the dependency for gradle: `org.everit.json:org.everit.json.schema`.
+
+The exception is `ValidationException`. This exception object contains:
+
+* Keyword: the type of error;
+* PointerToViolation: the field with the error;
+* ErrorMessage: the error message.
