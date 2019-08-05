@@ -1,0 +1,25 @@
+plugins {
+    id "java"
+    id "idea"
+}
+
+repositories {
+    jcenter()
+}
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+dependencies {
+    implementation(
+            "org.everit.json:org.everit.json.schema:1.5.1",
+            "org.projectlombok:lombok:1.18.8",
+            "com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.10.0.pr1"
+    )
+
+    testImplementation(
+            "junit:junit:4.12",
+            "org.assertj:assertj-core:3.13.2"
+    )
+}
+

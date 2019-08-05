@@ -1,0 +1,23 @@
+{
+  "id" : "ba6fec00-57b6-4aed-b849-00633273ad4c",
+  "length" : 180,
+  "machines" : [
+    {
+      "name" : "Drill1",
+      "type" : 200
+    },
+    {
+      "name" : "Drill2",
+      "type" : 200
+    },
+    {
+      "name" : "Drill3",
+      "type" : 200
+    },
+    {
+      "name" : "Drill4",
+      "type" : 200
+    }
+  ]
+
+}
