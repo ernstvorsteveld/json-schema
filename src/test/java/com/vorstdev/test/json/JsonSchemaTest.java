@@ -41,6 +41,7 @@ public class JsonSchemaTest {
             return true;
         } catch (ValidationException e) {
             System.out.println("Not a valid schema, error: " + e.getErrorMessage());
+            System.out.println("Type of error: " + e.getKeyword());
         } catch (JsonProcessingException e) {
             System.out.println("Not a valid schema, error: " + e.getMessage());
         }
