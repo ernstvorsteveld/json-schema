@@ -1,0 +1,101 @@
+== Json Schema versus SCIM Schema
+
+.Json Schema versus SCIM Schema
+[cols="1,1,1,1,6",options="header"]
+|===
+
+| SCIM Type
+| Characteristic
+| Json Schema type
+| Characteristic
+| Remarks
+
+| required
+| attribute
+| required
+| object
+| SCIM adds the required flag to the attribute, Json Schema does it on the object level.
+
+| canonicalValues
+| attribute
+| enum
+| type
+| No difference
+
+| caseExact
+| attribute
+|
+|
+| Not available in Json Schema
+
+| mutability
+| attribute
+|
+|
+| Not available in Json Schema
+
+| returned
+| attribute
+|
+|
+| Not available in Json Schema, but could be seen as a authorisation.
+
+| uniqueness
+| attribute
+|
+|
+| Not available in Json Schema
+
+| referenceTypes
+| attribute
+|
+|
+| What is it?
+
+|===
+
+
+== XML versus Json types
+
+.XML versus Json types
+[cols="1,5,2",options="header"]
+|===
+
+| SCIM Type
+| Json Type
+| Remark
+
+| string
+| String per Section 7 of [RFC7159], https://tools.ietf.org/html/rfc7159#section-7
+|
+
+| boolean
+| Value per Section 3 of [RFC7159], https://tools.ietf.org/html/rfc7159#section-3
+|
+
+| decimal
+| Number per Section 6 of [RFC7159], https://tools.ietf.org/html/rfc7159#section-6
+| ObjectMapper problem
+
+
+| integer
+| Number per Section 6 of [RFC7159], https://tools.ietf.org/html/rfc7159#section-6
+| ObjectMapper problem
+
+| dateTime
+| String per Section 7 of [RFC7159], https://tools.ietf.org/html/rfc7159#section-7
+| ObjectMapper problem
+
+| binary
+| Too much
+|
+
+| reference
+| String per Section 7 of [RFC7159], https://tools.ietf.org/html/rfc7159#section-7
+|
+
+| complex
+| Object per Section 4 of [RFC7159], https://tools.ietf.org/html/rfc7159#section-4
+|
+
+|===
