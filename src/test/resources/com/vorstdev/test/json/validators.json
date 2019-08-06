@@ -1,0 +1,23 @@
+{
+  "caseExact" : [
+    {
+      "attribute" : "machines.[].name"
+    }
+  ],
+  "mutability" : [
+    {
+      "attribute" : "id",
+      "value" : false
+    }
+  ],
+  "uniqueness" : [
+    {
+      "attribute" : "id"
+    }
+  ],
+  "returned" : [
+    {
+      "attribute" : "id"
+    }
+  ]
+}

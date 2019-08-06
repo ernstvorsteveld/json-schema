@@ -4,14 +4,18 @@ import java.io.InputStream;
 
 public class JsonSchemaSettings {
 
-    private final String schemaFilename;
+    private final SchemaDefinition schemaDefinition;
 
-    public JsonSchemaSettings(String schemaFilename) {
-        this.schemaFilename = schemaFilename;
+    public JsonSchemaSettings(SchemaDefinition schemaDefinition) {
+        this.schemaDefinition = schemaDefinition;
     }
 
     public InputStream getSchema() {
-        return JsonSchemaSettings.class.getResourceAsStream(this.schemaFilename);
+        return JsonSchemaSettings.class.getResourceAsStream(this.schemaDefinition.getSchemaFile());
+    }
+
+    public InputStream getValidator() {
+        return JsonSchemaSettings.class.getResourceAsStream(this.schemaDefinition.getValidators());
     }
 
 }

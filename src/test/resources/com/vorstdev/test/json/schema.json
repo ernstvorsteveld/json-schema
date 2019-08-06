@@ -10,7 +10,7 @@
       "pattern" : "\\b[0-9a-f]{8}\\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\\b[0-9a-f]{12}\\b"
     },
     "length": {
-      "description": "The length of the persion",
+      "description": "The length of the person",
       "type": "number",
       "minimum": 120,
       "maximum" : 240
@@ -26,6 +26,12 @@
           "type": "number"
         }
       }
+    },
+    "age" : {
+      "description" : "The age of a person",
+      "type" : "number",
+      "minimum" : 18,
+      "maximum" : 120
     }
   },
   "required": [

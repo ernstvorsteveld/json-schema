@@ -9,9 +9,11 @@ public class JsonSchemaTest {
 
     @Test
     public void should_read_schema() {
-        SchemaValidator schemaValidator = new SchemaValidator(
-                "/com/vorstdev/test/json/schema.json",
-                new ObjectMapper());
+        SchemaDefinition schemaDefinition = new SchemaDefinition(
+                "/com/vorstdev/test/json/schema.json", "/com/vorstdev/test/json/validators.json");
+        JsonSchemaSettings jsonSchemaSettings = new JsonSchemaSettings(schemaDefinition);
+        SchemaProvider schemaProvider = new SchemaProvider(jsonSchemaSettings);
+        SchemaValidator schemaValidator = new SchemaValidator(schemaProvider, new ObjectMapper());
         assertThat(schemaValidator.validate("/com/vorstdev/test/json/user.json")).isTrue();
         assertThat(schemaValidator.validate("/com/vorstdev/test/json/user-error0.json")).isFalse();
         assertThat(schemaValidator.validate("/com/vorstdev/test/json/user-error1.json")).isFalse();

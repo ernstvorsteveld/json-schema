@@ -11,35 +11,40 @@ import org.json.JSONTokener;
 
 public class SchemaValidator {
 
-    private final JsonSchemaSettings jsonSchemaSettings;
-    private final JSONObject jsonSchema;
     private final ObjectMapper objectMapper;
-    private final Schema schema;
+    private final SchemaProvider schemaProvider;
 
-    public SchemaValidator(String schemaFile, ObjectMapper objectMapper) {
-        this.jsonSchemaSettings = new JsonSchemaSettings(schemaFile);
-        this.jsonSchema = new JSONObject(new JSONTokener(jsonSchemaSettings.getSchema()));
+    public SchemaValidator(SchemaProvider schemaProvider, ObjectMapper objectMapper) {
         this.objectMapper = objectMapper;
-        this.schema = SchemaLoader.load(jsonSchema);
+        this.schemaProvider = schemaProvider;
     }
 
     public boolean validate(String userFile) {
         JSONObject jsonSubject = new JSONObject(
                 new JSONTokener(SchemaValidator.class.getResourceAsStream(userFile)));
-
+        boolean isValid = schema(jsonSubject) && constraints(jsonSubject);
         try {
-            this.schema.validate(jsonSubject);
             System.out.println(objectMapper.readValue(jsonSubject.toString(), HashMap.class));
+        } catch (JsonProcessingException e) {
+            System.out.println("Not a valid object mapper call, error: " + e.getMessage());
+        }
+        return isValid;
+    }
+
+    private boolean schema(JSONObject jsonSubject) {
+        try {
+            this.schemaProvider.getSchema().validate(jsonSubject);
             return true;
         } catch (ValidationException e) {
             System.out.println("Type of error: " + e.getKeyword());
             System.out.println("Error message: " + e.getErrorMessage());
             System.out.println("Attribute: " + e.getPointerToViolation());
-        } catch (JsonProcessingException e) {
-            System.out.println("Not a valid object mapper call, error: " + e.getMessage());
         }
         return false;
     }
 
+    private boolean constraints(JSONObject jsonSubject) {
+        return true;
+    }
 
 }
