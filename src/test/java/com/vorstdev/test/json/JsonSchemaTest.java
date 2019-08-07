@@ -4,11 +4,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vorstdev.test.json.constraints.ConstraintsValidator;
-import com.vorstdev.test.json.constraints.validator.CaseExactValidator;
-import com.vorstdev.test.json.constraints.validator.MutabilityValidator;
-import com.vorstdev.test.json.constraints.validator.ReturnedValidator;
-import com.vorstdev.test.json.constraints.validator.UniquenessValidator;
-import com.vorstdev.test.json.constraints.validator.Validator;
+import com.vorstdev.test.json.constraints.validator.CaseExactConstraintValidator;
+import com.vorstdev.test.json.constraints.validator.MutabilityConstraintValidator;
+import com.vorstdev.test.json.constraints.validator.ReturnedConstraintValidator;
+import com.vorstdev.test.json.constraints.validator.UniquenessConstraintValidator;
+import com.vorstdev.test.json.constraints.validator.ConstraintValidator;
 import com.vorstdev.test.json.constraints.validator.ValidatorCollector;
 import com.vorstdev.test.json.schema.SchemaDefinition;
 import com.vorstdev.test.json.schema.SchemaProvider;
@@ -39,11 +39,11 @@ public class JsonSchemaTest {
     }
 
     private ValidatorCollector getValidatorCollector() {
-        Map<String, Validator> validatorMap = new HashMap<>();
-        validatorMap.put("uniqueness", new UniquenessValidator());
-        validatorMap.put("returned", new ReturnedValidator());
-        validatorMap.put("caseExact", new CaseExactValidator());
-        validatorMap.put("mutability", new MutabilityValidator());
+        Map<String, ConstraintValidator> validatorMap = new HashMap<>();
+        validatorMap.put("uniqueness", new UniquenessConstraintValidator());
+        validatorMap.put("returned", new ReturnedConstraintValidator());
+        validatorMap.put("caseExact", new CaseExactConstraintValidator());
+        validatorMap.put("mutability", new MutabilityConstraintValidator());
         return  new ValidatorCollector(validatorMap);
     }
 

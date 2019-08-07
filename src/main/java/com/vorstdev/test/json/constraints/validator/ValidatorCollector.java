@@ -4,13 +4,13 @@ import java.util.Map;
 
 public class ValidatorCollector {
 
-    private final Map<String, Validator> validatorMap;
+    private final Map<String, ConstraintValidator> validatorMap;
 
-    public ValidatorCollector(Map<String, Validator> validatorMap) {
+    public ValidatorCollector(Map<String, ConstraintValidator> validatorMap) {
         this.validatorMap = validatorMap;
     }
 
-    public Validator getValidator(String validatorName) {
+    public ConstraintValidator getValidator(String validatorName) {
         if(validatorMap.containsKey(validatorName)) {
             return validatorMap.get(validatorName);
         }
