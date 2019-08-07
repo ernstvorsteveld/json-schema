@@ -1,5 +1,6 @@
 package com.vorstdev.test.json;
 
+import com.vorstdev.test.json.schema.SchemaDefinition;
 import java.io.InputStream;
 
 public class JsonSchemaSettings {

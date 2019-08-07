@@ -1,5 +1,6 @@
-package com.vorstdev.test.json;
+package com.vorstdev.test.json.schema;
 
+import com.vorstdev.test.json.JsonSchemaSettings;
 import org.everit.json.schema.Schema;
 import org.everit.json.schema.loader.SchemaLoader;
 import org.json.JSONObject;

@@ -1,4 +1,4 @@
-package com.vorstdev.test.json;
+package com.vorstdev.test.json.schema;
 
 public class SchemaDefinition {
 

@@ -1,21 +1,18 @@
-package com.vorstdev.test.json;
+package com.vorstdev.test.json.schema;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.HashMap;
-import org.everit.json.schema.Schema;
+import com.vorstdev.test.json.AbstractValidator;
+import com.vorstdev.test.json.JsonValidator;
 import org.everit.json.schema.ValidationException;
-import org.everit.json.schema.loader.SchemaLoader;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
-public class SchemaValidator {
+public class SchemaValidator extends AbstractValidator implements JsonValidator {
 
-    private final ObjectMapper objectMapper;
     private final SchemaProvider schemaProvider;
 
     public SchemaValidator(SchemaProvider schemaProvider, ObjectMapper objectMapper) {
-        this.objectMapper = objectMapper;
+        super(objectMapper);
         this.schemaProvider = schemaProvider;
     }
 
@@ -23,11 +20,6 @@ public class SchemaValidator {
         JSONObject jsonSubject = new JSONObject(
                 new JSONTokener(SchemaValidator.class.getResourceAsStream(userFile)));
         boolean isValid = schema(jsonSubject) && constraints(jsonSubject);
-        try {
-            System.out.println(objectMapper.readValue(jsonSubject.toString(), HashMap.class));
-        } catch (JsonProcessingException e) {
-            System.out.println("Not a valid object mapper call, error: " + e.getMessage());
-        }
         return isValid;
     }
 
