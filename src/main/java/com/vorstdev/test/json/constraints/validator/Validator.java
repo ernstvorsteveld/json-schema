@@ -5,6 +5,6 @@ import java.util.Map;
 
 public interface Validator {
 
-    boolean isValid(Map<String,Object> toValidate, Constraint constraint);
+    boolean isInvalid(Map<String,Object> toValidate, Constraint constraint);
 
 }
