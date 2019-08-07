@@ -5,6 +5,10 @@ import java.util.Map;
 
 public interface ConstraintValidator {
 
-    boolean isInvalid(Map<String,Object> toValidate, Constraint constraint);
+    boolean isInvalid(Operation operation, Map<String,Object> toValidate, Constraint constraint);
+
+    enum Operation {
+        Create, Update, Delete
+    }
 
 }

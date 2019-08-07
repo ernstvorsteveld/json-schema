@@ -3,6 +3,7 @@ package com.vorstdev.test.json.schema;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vorstdev.test.json.AbstractValidator;
 import com.vorstdev.test.json.JsonValidator;
+import com.vorstdev.test.json.constraints.validator.ConstraintValidator.Operation;
 import org.everit.json.schema.ValidationException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
@@ -16,7 +17,7 @@ public class SchemaValidator extends AbstractValidator implements JsonValidator 
         this.schemaProvider = schemaProvider;
     }
 
-    public boolean validate(String userFile) {
+    public boolean validate(Operation operation, String userFile) {
         JSONObject jsonSubject = new JSONObject(
                 new JSONTokener(SchemaValidator.class.getResourceAsStream(userFile)));
         boolean isValid = schema(jsonSubject) && constraints(jsonSubject);

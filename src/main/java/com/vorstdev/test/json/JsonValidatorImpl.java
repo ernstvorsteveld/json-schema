@@ -1,6 +1,7 @@
 package com.vorstdev.test.json;
 
 import com.vorstdev.test.json.constraints.ConstraintsValidator;
+import com.vorstdev.test.json.constraints.validator.ConstraintValidator.Operation;
 import com.vorstdev.test.json.schema.SchemaValidator;
 
 public class JsonValidatorImpl implements JsonValidator {
@@ -14,7 +15,7 @@ public class JsonValidatorImpl implements JsonValidator {
     }
 
     @Override
-    public boolean validate(String userFile) {
-        return schemaValidator.validate(userFile) && constraintsValidator.validate(userFile);
+    public boolean validate(Operation operation, String userFile) {
+        return schemaValidator.validate(operation, userFile) && constraintsValidator.validate(operation, userFile);
     }
 }

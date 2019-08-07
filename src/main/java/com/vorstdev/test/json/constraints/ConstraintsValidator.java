@@ -3,6 +3,7 @@ package com.vorstdev.test.json.constraints;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vorstdev.test.json.AbstractValidator;
 import com.vorstdev.test.json.JsonValidator;
+import com.vorstdev.test.json.constraints.validator.ConstraintValidator.Operation;
 import com.vorstdev.test.json.constraints.validator.ValidatorCollector;
 import com.vorstdev.test.json.schema.SchemaDefinition;
 import java.io.IOException;
@@ -26,15 +27,15 @@ public class ConstraintsValidator extends AbstractValidator implements JsonValid
     }
 
     @Override
-    public boolean validate(String userFile) {
+    public boolean validate(Operation operation, String userFile) {
         Map<String, Object> userMap = getUserMap(userFile);
-        List<Constraint> failed = this.constraints.getConstraints().stream().filter(c -> validate(userMap, c))
+        List<Constraint> failed = this.constraints.getConstraints().stream().filter(c -> validate(operation, userMap, c))
                 .collect(Collectors.toList());
         return failed.isEmpty();
     }
 
-    private boolean validate(Map<String, Object> userMap, Constraint constraint) {
-        return validatorCollector.getValidator(constraint.getType()).isInvalid(userMap, constraint);
+    private boolean validate(Operation operation, Map<String, Object> userMap, Constraint constraint) {
+        return validatorCollector.getValidator(constraint.getType()).isInvalid(operation, userMap, constraint);
     }
 
     private Map<String, Object> getUserMap(String userFile) {

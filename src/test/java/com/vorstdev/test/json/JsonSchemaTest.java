@@ -5,10 +5,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vorstdev.test.json.constraints.ConstraintsValidator;
 import com.vorstdev.test.json.constraints.validator.CaseExactConstraintValidator;
+import com.vorstdev.test.json.constraints.validator.ConstraintValidator;
+import com.vorstdev.test.json.constraints.validator.ConstraintValidator.Operation;
 import com.vorstdev.test.json.constraints.validator.MutabilityConstraintValidator;
 import com.vorstdev.test.json.constraints.validator.ReturnedConstraintValidator;
 import com.vorstdev.test.json.constraints.validator.UniquenessConstraintValidator;
-import com.vorstdev.test.json.constraints.validator.ConstraintValidator;
 import com.vorstdev.test.json.constraints.validator.ValidatorCollector;
 import com.vorstdev.test.json.schema.SchemaDefinition;
 import com.vorstdev.test.json.schema.SchemaProvider;
@@ -32,10 +33,10 @@ public class JsonSchemaTest {
 
         JsonValidator jsonValidator = new JsonValidatorImpl(schemaValidator, constraintsValidator);
 
-        assertThat(jsonValidator.validate("/com/vorstdev/test/json/user.json")).isTrue();
-        assertThat(jsonValidator.validate("/com/vorstdev/test/json/user-error0.json")).isFalse();
-        assertThat(jsonValidator.validate("/com/vorstdev/test/json/user-error1.json")).isFalse();
-        assertThat(jsonValidator.validate("/com/vorstdev/test/json/user-error2.json")).isFalse();
+        assertThat(jsonValidator.validate(Operation.Create, "/com/vorstdev/test/json/user.json")).isTrue();
+        assertThat(jsonValidator.validate(Operation.Create, "/com/vorstdev/test/json/user-error0.json")).isFalse();
+        assertThat(jsonValidator.validate(Operation.Create, "/com/vorstdev/test/json/user-error1.json")).isFalse();
+        assertThat(jsonValidator.validate(Operation.Create, "/com/vorstdev/test/json/user-error2.json")).isFalse();
     }
 
     private ValidatorCollector getValidatorCollector() {
@@ -44,7 +45,7 @@ public class JsonSchemaTest {
         validatorMap.put("returned", new ReturnedConstraintValidator());
         validatorMap.put("caseExact", new CaseExactConstraintValidator());
         validatorMap.put("mutability", new MutabilityConstraintValidator());
-        return  new ValidatorCollector(validatorMap);
+        return new ValidatorCollector(validatorMap);
     }
 
 }
