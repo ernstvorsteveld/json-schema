@@ -2,40 +2,13 @@ package com.vorstdev.test.json.constraints;
 
 public class Constraints {
 
-    private AttributeConstraintList caseExact;
-    private AttributeConstraintList mutability;
-    private AttributeConstraintList uniqueness;
-    private AttributeConstraintList returned;
+    private ConstraintList constraints;
 
-    public AttributeConstraintList getCaseExact() {
-        return caseExact;
+    public ConstraintList getConstraints() {
+        return constraints;
     }
 
-    public void setCaseExact(AttributeConstraintList caseExact) {
-        this.caseExact = caseExact;
-    }
-
-    public AttributeConstraintList getMutability() {
-        return mutability;
-    }
-
-    public void setMutability(AttributeConstraintList mutability) {
-        this.mutability = mutability;
-    }
-
-    public AttributeConstraintList getUniqueness() {
-        return uniqueness;
-    }
-
-    public void setUniqueness(AttributeConstraintList uniqueness) {
-        this.uniqueness = uniqueness;
-    }
-
-    public AttributeConstraintList getReturned() {
-        return returned;
-    }
-
-    public void setReturned(AttributeConstraintList returned) {
-        this.returned = returned;
+    public void setConstraints(ConstraintList constraints) {
+        this.constraints = constraints;
     }
 }

@@ -30,7 +30,7 @@ public class SchemaValidator extends AbstractValidator implements JsonValidator 
         } catch (ValidationException e) {
             System.out.println("Type of error: " + e.getKeyword());
             System.out.println("Error message: " + e.getErrorMessage());
-            System.out.println("AttributeConstraint: " + e.getPointerToViolation());
+            System.out.println("Constraint: " + e.getPointerToViolation());
         }
         return false;
     }

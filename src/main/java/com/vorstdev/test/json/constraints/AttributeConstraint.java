@@ -3,7 +3,7 @@ package com.vorstdev.test.json.constraints;
 public class AttributeConstraint {
 
     private String attribute;
-    private Boolean value = false;
+    private Boolean value;
 
     public String getAttribute() {
         return attribute;

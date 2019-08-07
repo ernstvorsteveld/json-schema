@@ -1,23 +1,37 @@
 {
-  "caseExact" : [
+  "constraints": [
     {
-      "attribute" : "machines.[].name"
-    }
-  ],
-  "mutability" : [
+      "type": "caseExact",
+      "constraints": [
+        {
+          "attribute": "machines.[].name"
+        }
+      ]
+    },
     {
-      "attribute" : "id",
-      "value" : false
-    }
-  ],
-  "uniqueness" : [
+      "type": "mutability",
+      "constraints": [
+        {
+          "attribute": "id",
+          "value": false
+        }
+      ]
+    },
     {
-      "attribute" : "id"
-    }
-  ],
-  "returned" : [
+      "type": "uniqueness",
+      "constraints": [
+        {
+          "attribute": "id"
+        }
+      ]
+    },
     {
-      "attribute" : "id"
+      "type": "returned",
+      "constraints": [
+        {
+          "attribute": "id"
+        }
+      ]
     }
   ]
 }
