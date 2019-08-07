@@ -1,13 +1,41 @@
 package com.vorstdev.test.json.constraints;
 
-import lombok.Data;
-
-@Data
 public class Constraints {
 
-    private AttributeList caseExact;
-    private AttributeList mutability;
-    private AttributeList uniqueness;
-    private AttributeList returned;
+    private AttributeConstraintList caseExact;
+    private AttributeConstraintList mutability;
+    private AttributeConstraintList uniqueness;
+    private AttributeConstraintList returned;
 
+    public AttributeConstraintList getCaseExact() {
+        return caseExact;
+    }
+
+    public void setCaseExact(AttributeConstraintList caseExact) {
+        this.caseExact = caseExact;
+    }
+
+    public AttributeConstraintList getMutability() {
+        return mutability;
+    }
+
+    public void setMutability(AttributeConstraintList mutability) {
+        this.mutability = mutability;
+    }
+
+    public AttributeConstraintList getUniqueness() {
+        return uniqueness;
+    }
+
+    public void setUniqueness(AttributeConstraintList uniqueness) {
+        this.uniqueness = uniqueness;
+    }
+
+    public AttributeConstraintList getReturned() {
+        return returned;
+    }
+
+    public void setReturned(AttributeConstraintList returned) {
+        this.returned = returned;
+    }
 }
