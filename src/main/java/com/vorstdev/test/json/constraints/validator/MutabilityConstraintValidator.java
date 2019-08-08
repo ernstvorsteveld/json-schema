@@ -3,7 +3,6 @@ package com.vorstdev.test.json.constraints.validator;
 import com.vorstdev.test.json.constraints.AttributeConstraint;
 import com.vorstdev.test.json.constraints.Constraint;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 import org.json.JSONObject;
 

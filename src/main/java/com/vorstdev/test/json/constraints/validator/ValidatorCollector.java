@@ -11,7 +11,7 @@ public class ValidatorCollector {
     }
 
     public ConstraintValidator getValidator(String validatorName) {
-        if(validatorMap.containsKey(validatorName)) {
+        if (validatorMap.containsKey(validatorName)) {
             return validatorMap.get(validatorName);
         }
         throw new ValidatorNotFoundException(validatorName);
