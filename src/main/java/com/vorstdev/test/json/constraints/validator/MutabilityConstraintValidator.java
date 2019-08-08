@@ -16,7 +16,7 @@ public class MutabilityConstraintValidator extends AbstractConstraintValidator i
         }
 
         List<AttributeConstraint> collect = constraint.getConstraints().stream()
-                .filter(c -> isInvalid(c, operation, jsonObject))
+                .filter(c -> isInvalid(c, jsonObject))
                 .collect(Collectors.toList());
         return !collect.isEmpty();
     }
@@ -26,7 +26,6 @@ public class MutabilityConstraintValidator extends AbstractConstraintValidator i
      */
     private boolean isInvalid(
             AttributeConstraint attributeConstraint,
-            Operation operation,
             JSONObject jsonObject) {
         if (!attributeConstraint.getValue()) {
             return false;
