@@ -26,11 +26,11 @@ public class MutabilityConstraintValidator extends AbstractConstraintValidator i
     private boolean isInvalid(
             AttributeConstraint attributeConstraint,
             JSONObject jsonObject) {
-        if (!attributeConstraint.getValue()) {
+        if (attributeConstraint.getValue() == null || !attributeConstraint.getValue()) {
             return false;
         }
 
         Object value = getValue(attributeConstraint.getAttribute(), jsonObject);
-        return value == null;
+        return value != null;
     }
 }

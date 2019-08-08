@@ -23,7 +23,7 @@ public class JsonSchemaTest {
     @Test
     public void should_read_schema() {
         SchemaDefinition schemaDefinition = new SchemaDefinition(
-                "/com/vorstdev/test/json/schema.json", "/com/vorstdev/test/json/validators.json");
+                "/com/vorstdev/test/json/schema.json", "/com/vorstdev/test/json/constraints.json");
         JsonSchemaSettings jsonSchemaSettings = new JsonSchemaSettings(schemaDefinition);
         SchemaProvider schemaProvider = new SchemaProvider(jsonSchemaSettings);
         ObjectMapper objectMapper = new ObjectMapper();
