@@ -37,6 +37,9 @@ public class JsonSchemaTest {
         assertThat(jsonValidator.validate(Operation.Create, "/com/vorstdev/test/json/user-error0.json")).isFalse();
         assertThat(jsonValidator.validate(Operation.Create, "/com/vorstdev/test/json/user-error1.json")).isFalse();
         assertThat(jsonValidator.validate(Operation.Create, "/com/vorstdev/test/json/user-error2.json")).isFalse();
+
+        assertThat(jsonValidator.validate(Operation.Update, "/com/vorstdev/test/json/user.json")).isFalse();
+
     }
 
     private ValidatorCollector getValidatorCollector() {

@@ -6,11 +6,13 @@ import com.vorstdev.test.json.JsonValidator;
 import com.vorstdev.test.json.constraints.validator.ConstraintValidator.Operation;
 import com.vorstdev.test.json.constraints.validator.ValidatorCollector;
 import com.vorstdev.test.json.schema.SchemaDefinition;
+import com.vorstdev.test.json.schema.SchemaValidator;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import org.json.JSONObject;
+import org.json.JSONTokener;
 
 public class ConstraintsValidator extends AbstractValidator implements JsonValidator {
 
@@ -28,23 +30,19 @@ public class ConstraintsValidator extends AbstractValidator implements JsonValid
 
     @Override
     public boolean validate(Operation operation, String userFile) {
-        Map<String, Object> userMap = getUserMap(userFile);
-        List<Constraint> failed = this.constraints.getConstraints().stream().filter(c -> validate(operation, userMap, c))
+        JSONObject jsonObject = getUserMap(userFile);
+        List<Constraint> failed = this.constraints.getConstraints().stream()
+                .filter(c -> validate(operation, jsonObject, c))
                 .collect(Collectors.toList());
         return failed.isEmpty();
     }
 
-    private boolean validate(Operation operation, Map<String, Object> userMap, Constraint constraint) {
-        return validatorCollector.getValidator(constraint.getType()).isInvalid(operation, userMap, constraint);
+    private boolean validate(Operation operation, JSONObject jsonObject, Constraint constraint) {
+        return validatorCollector.getValidator(constraint.getType()).isInvalid(operation, jsonObject, constraint);
     }
 
-    private Map<String, Object> getUserMap(String userFile) {
-        try {
-            return getObjectMapper().readValue(ConstraintsValidator.class.getResourceAsStream(userFile), HashMap.class);
-        } catch (IOException e) {
-            System.out.println("Not a valid object mapper call, error: " + e.getMessage());
-            throw new JsonNotValidException(e.getMessage());
-        }
+    private JSONObject getUserMap(String userFile) {
+            return new JSONObject(new JSONTokener(SchemaValidator.class.getResourceAsStream(userFile)));
     }
 
     private Constraints getConstraints(String constraintsFile) {

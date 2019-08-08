@@ -4,7 +4,7 @@
       "type": "caseExact",
       "constraints": [
         {
-          "attribute": "machines.[].name"
+          "attribute": "machines.name"
         }
       ]
     },
@@ -12,7 +12,7 @@
       "type": "mutability",
       "constraints": [
         {
-          "attribute": "id",
+          "attribute": "length",
           "value": false
         }
       ]
